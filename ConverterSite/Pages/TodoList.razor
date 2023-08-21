@@ -1,0 +1,52 @@
+﻿
+@using ConverterSite.Data;
+@page "/todolist"
+
+
+<h3>Todo List</h3>
+
+<div>
+    <input type="text" @bind="newTask" />
+    <button class="btn btn-success" @onclick="AddTask">Add Task</button>
+</div>
+
+<ul>
+    @foreach (var todo in todos)
+    {
+
+        <li class="list-group-item">
+
+            @todo.Title
+            <input type="checkbox" @onchange="()=>DeleteTask(todo)" checked="@todo.IsDone" />
+        </li>
+    }
+</ul>
+
+@code {
+    private List<Todo> todos = new List<Todo>
+{
+        new Todo { Id = 1, Title = "Complete Blazor tutorial", IsDone = false },
+        new Todo { Id = 2, Title = "Create a to-do list app", IsDone = true }
+    };
+
+    private string newTask = "";
+
+    private void AddTask()
+    {
+        if (!string.IsNullOrWhiteSpace(newTask))
+        {
+            todos.Add(new Todo { Id = todos.Count + 1, Title = newTask, IsDone = false });
+            newTask = "";
+        }
+    }
+
+    private void ToggleTodoStatus(Todo todo)
+    {
+        todo.IsDone = !todo.IsDone;
+    }
+
+    private void DeleteTask(Todo todo)
+    {
+        todos.Remove(todo);
+    }
+}
