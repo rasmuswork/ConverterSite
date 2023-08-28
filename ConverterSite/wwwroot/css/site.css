@@ -67,6 +67,12 @@ a, .btn-link {
         content: "An error has occurred."
     }
 
-.megaclass{
-    
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }
