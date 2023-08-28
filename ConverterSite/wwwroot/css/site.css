@@ -72,7 +72,14 @@ td, th {
     text-align: left;
     padding: 8px;
 }
+.work {
+    background-color:yellow;
+}
 
-tr:nth-child(even) {
-    background-color: #dddddd;
+.lift {
+   background-color:green;
+}
+
+.awaken{
+    background-color:crimson;
 }
