@@ -3,52 +3,54 @@
 @page "/"
 
 
-<h3>Todo List</h3>
 
-<div style="display: flex; width: 100%;">
+
+
+
+<h3 style="color:white">Todo List</h3>
+
+<div style="display: flex; width: 100%;" class="@GetDarkModeClass()">
     <div style="flex: 1; padding: 20px; box-sizing: border-box; background-color: #f0f0f0;">
-        
-<div>
-    <input type="text" @bind="newTask" />
-    <button class="btn btn-success mb-2" @onclick="AddTask">Add Task</button>
-</div>
 
-<ul>
-    @foreach (var todo in todos)
-    {
+        <div>
+            <input type="text" @bind="newTask" />
+            <button class="btn btn-success mb-2" @onclick="AddTask">Add Task</button>
+        </div>
 
-        <li class="list-group-item">
+        <ul>
+            @foreach (var todo in todos)
+            {
 
-            <button class="btn btn-danger mb-2" @onclick="()=>DeleteTask(todo)">Delete</button>
-            @todo.Title
-
-        </li>
-    }
-</ul>
+                <li class="list-group-item">
+                    <button class="btn btn-danger mb-2" @onclick="()=>DeleteTask(todo)">Delete</button>
+                    @todo.Title
+                </li>
+            }
+        </ul>
 
     </div>
-    <div style="flex: 1; padding: 20px; box-sizing: border-box;">
-        <h2>Schedule</h2>
+    <div style="flex: 1; padding: 20px; box-sizing: border-box; background-color:white;">
+        <h2>Schedule - @DateTime.Now</h2>
         <table>
 
             <tr>
                 <th>Time</th>
-                <th>Monday</th>
-                <th>Tuesday</th>
-                <th>Wednesday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
-                <th>Saturday</th>
-                <th>Sunday</th>
+                <th class="@GetDayClass(DayOfWeek.Monday)">Monday</th>
+                <th class="@GetDayClass(DayOfWeek.Tuesday)">Tuesday</th>
+                <th class="@GetDayClass(DayOfWeek.Wednesday)">Wednesday</th>
+                <th class="@GetDayClass(DayOfWeek.Thursday)">Thursday</th>
+                <th class="@GetDayClass(DayOfWeek.Friday)">Friday</th>
+                <th class="@GetDayClass(DayOfWeek.Saturday)">Saturday</th>
+                <th class="@GetDayClass(DayOfWeek.Sunday)">Sunday</th>
             </tr>
 
             <tr>
                 <td class="time-slot">7:00</td>
-                <td class="awaken">Awaken</td>
-                <td class="awaken">Awaken</td>
-                <td class="awaken">Awaken</td>
-                <td class="awaken">Awaken</td>
-                <td class="awaken">Awaken</td>
+                <td>Awaken</td>
+                <td>Awaken</td>
+                <td>Awaken</td>
+                <td>Awaken</td>
+                <td>Awaken</td>
 
                 <td></td>
                 <td></td>
@@ -165,10 +167,10 @@
                 <td class="time-slot">18:00</td>
                 <td></td>
                 <td></td>
-                <td>Cook</td>
+                <td class="food">Lave mad</td>
                 <td></td>
                 <td></td>
-                <td>Lave mad</td>
+                <td class="food">Lave mad</td>
                 <td></td>
             </tr>
         </table>
@@ -184,8 +186,10 @@
         new Todo { Id = 1, Title = "Complete Blazor tutorial"},
         new Todo { Id = 2, Title = "Create a to-do list app" }
     };
-
+    private bool isDarkMode = false;
     private string newTask = "";
+
+    private DayOfWeek currentDayOfWeek = DateTime.Today.DayOfWeek;
 
     private void AddTask()
     {
@@ -196,10 +200,27 @@
         }
     }
 
-
+    private string GetDayClass(DayOfWeek dayOfWeek)
+    {
+        return currentDayOfWeek == dayOfWeek ? "current-day" : "";
+    }
 
     private void DeleteTask(Todo todo)
     {
         todos.Remove(todo);
+    }
+
+    private string GetDarkModeClass()
+    {
+        return isDarkMode ? "dark-mode" : "";
+    }
+
+
+
+
+
+    private void ToggleDarkMode()
+    {
+        isDarkMode = !isDarkMode;
     }
 }

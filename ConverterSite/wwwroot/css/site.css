@@ -1,8 +1,32 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
 }
+
+
+body {
+    background: linear-gradient(-45deg, #7DF9FF, #6495ED, #00065e, #0f124d);
+    background-size: 400% 400%;
+    animation: gradient 40s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
 
 h1:focus {
     outline: none;
@@ -67,7 +91,26 @@ a, .btn-link {
         content: "An error has occurred."
     }
 
+.dark-mode {
+    background-color: yellow;
+    color: white;
+}
+
+
+.current-day {
+    background-color: lightcoral;
+    border: 2px solid;
+    text-align: center;
+    text-decoration-color:white;
+
+    
+}
+
+
+
+
 td, th {
+    
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
@@ -83,3 +126,7 @@ td, th {
 .awaken{
     background-color:crimson;
 }
+.food{
+    background-color: royalblue;
+}
+
