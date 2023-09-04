@@ -9,7 +9,7 @@
 
 <h3 style="color:white">Todo List</h3>
 
-<div style="display: flex; width: 100%;" class="@GetDarkModeClass()">
+<div style="display: flex; width: 100%;" class="@GetDarkModeClass()"> 
     <div style="flex: 1; padding: 20px; box-sizing: border-box; background-color: #f0f0f0;">
 
         <div>
@@ -29,11 +29,13 @@
         </ul>
 
     </div>
+
+
     <div style="flex: 1; padding: 20px; box-sizing: border-box; background-color:white;">
-        <h2>Schedule - @DateTime.Now</h2>
+        <h2>Schedule - @DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")</h2>
         <table>
 
-            <tr>
+            <tr class="dark-mode">
                 <th>Time</th>
                 <th class="@GetDayClass(DayOfWeek.Monday)">Monday</th>
                 <th class="@GetDayClass(DayOfWeek.Tuesday)">Tuesday</th>
@@ -174,8 +176,11 @@
                 <td></td>
             </tr>
         </table>
+
     </div>
+
 </div>
+
 
 
 
