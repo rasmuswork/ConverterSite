@@ -8,7 +8,7 @@ html, body {
 body {
     background: linear-gradient(-45deg, #2a4457, #6495ED, #00065e, #0f124d);
     background-size: 400% 400%;
-    animation: gradient 40s ease infinite;
+    animation: gradient 80s ease infinite;
     height: 100vh;
 }
 
@@ -104,7 +104,6 @@ a, .btn-link {
     text-align: center;
     color:black;
 }
-
 
 
 
